@@ -1,0 +1,7 @@
+INFO	?	main	2016-09-07T01:11:20.179Z	org.javacs.Main#connectToNode	Connected to parent using socket on port 55282
+INFO	?	main	2016-09-07T01:11:20.351Z	org.javacs.JavaLanguageServer#doLint	Lint /Users/kolobj/Documents/Source/infsci2560/infsci2560fa16/getting-started-on-heroku-with-java-RoakyWood/src/main/java/Main.java
+INFO	?	main	2016-09-07T01:11:20.372Z	org.javacs.JavaLanguageServer#buildClassPath	Emit classpath to /var/folders/j0/6nl1fjyx4w36tzw7z78cx0_h40tpc5/T/classpath5192871628733540008.txt
+INFO	?	main	2016-09-07T01:11:24.498Z	org.javacs.JavaLanguageServer#sourceDirectories	Use default source directory src/main/java
+INFO	?	main	2016-09-07T01:11:24.499Z	org.javacs.JavaLanguageServer#sourceDirectories	Use default test directory src/test/java
+INFO	?	InitialIndex	2016-09-07T01:11:24.756Z	org.javacs.SymbolIndex$1#parseAll	Index /Users/kolobj/Documents/Source/infsci2560/infsci2560fa16/getting-started-on-heroku-with-java-RoakyWood/src/main/java/Main.java
+INFO	?	main	2016-09-07T01:17:11.333Z	org.javacs.Main#run	Connection closed
