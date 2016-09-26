@@ -1,0 +1,20 @@
+<html>
+    
+    <body>
+        <script language="javascript" type="text/javascript">
+            document.write ("<p id='p1'>Hello World!</p>");
+            //document.write ("Hello World!");
+            
+            function hide_text() {
+                var p1 = document.getElementById('p1');
+                p1.style.visibility = "hidden";                
+            }
+            function show_text() {
+                var p1 = document.getElementById('p1');
+                p1.style.visibility = "visible";                
+            }
+        </script>
+        <input type="button" value="hide the text" onclick="hide_text();" />
+        <input type="button" value="show the text" onclick="show_text();" />
+    </body>
+</html>

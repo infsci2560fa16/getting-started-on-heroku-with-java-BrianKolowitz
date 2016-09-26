@@ -12,6 +12,9 @@ import spark.ModelAndView;
 import static spark.Spark.get;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
 public class Main {
 
@@ -54,7 +57,32 @@ public class Main {
         if (connection != null) try{connection.close();} catch(SQLException e){}
       }
     }, new FreeMarkerEngine());
+    
+    UserService userService = new UserService();
+    
+    get("/users", (req, res) -> {
+        res.type("application/json");
+        return userService.getAllUsers();
+      }, JsonUtil.json());
+    
+    get("/users/:id", (req, res) -> {
+      res.type("application/json");
+        String id = req.params(":id");
+        User user = userService.getUser(id);
+        if (user != null) {
+          return user;
+        }
+        res.status(400);
+        return new ResponseError("No user with id '%s' found", id);
+      }, JsonUtil.json());
+    
+    exception(IllegalArgumentException.class, (e, req, res) -> {
+        res.status(400);
+        res.body(JsonUtil.toJson(new ResponseError(e)));
+      });
 
   }
+  
+  
 
 }
