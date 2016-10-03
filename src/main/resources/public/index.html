@@ -1,20 +1,36 @@
 <html>
-    
-    <body>
-        <script language="javascript" type="text/javascript">
-            document.write ("<p id='p1'>Hello World!</p>");
-            //document.write ("Hello World!");
-            
-            function hide_text() {
-                var p1 = document.getElementById('p1');
-                p1.style.visibility = "hidden";                
-            }
-            function show_text() {
-                var p1 = document.getElementById('p1');
-                p1.style.visibility = "visible";                
-            }
+    <head>
+        <style type="text/css">
+        .result {
+             border-collapse: collapse;
+        }
+        .result > tr:nth-child(odd) {
+            background-color: yellow;
+        }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>
+            $(function() {
+                console.log( "ready!" );
+                $.get("users", handle_get_users);
+            });
+            function handle_get_users(data) {
+                var result = $(".result");
+                $(data).each(function(index, item){
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + item.id + "</td>");
+                    row.append("<td>" + item.name + "</td>");
+                    row.append("<td>" + item.email + "</td>");
+                    result.append(row);
+                });
+                //$( ".result" ).html( data );
+                //alert( "Load was performed." );
+                
+            }            
         </script>
-        <input type="button" value="hide the text" onclick="hide_text();" />
-        <input type="button" value="show the text" onclick="show_text();" />
+    </head>
+    <body>          
+        <table class="result">
+        </table>
     </body>
 </html>

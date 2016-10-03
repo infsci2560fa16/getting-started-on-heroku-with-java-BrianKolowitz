@@ -18,20 +18,20 @@ public class UserService {
     public UserService() {
         User user = new User();
         user.setId("1866d959-4a52-4409-afc8-4f09896f38b2");
-        user.setEmail("john");
-        user.setName("john@foobar.com");
+        user.setName("john");
+        user.setEmail("john@foobar.com");
         db.add(user);
 
         user = new User();
         user.setId("90d965ad-5bdf-455d-9808-c38b72a5181a");
-        user.setEmail("anna");
-        user.setName("anna@foobar.com");
+        user.setName("anna");
+        user.setEmail("anna@foobar.com");
         db.add(user);
 
         user = new User();
         user.setId("fdfsdfsd-5bdf-455d-9808-c38b72a5181a");
-        user.setEmail("brian");
-        user.setName("brian@foobar.com");
+        user.setName("brian");
+        user.setEmail("brian@foobar.com");
         db.add(user);
     }
     
