@@ -13,6 +13,10 @@
             $(function() {
                 console.log( "ready!" );
                 $.get("users", handle_get_users);
+                
+                $("#myButton").click(function() { 
+                    $("#myImage").slideUp(); 
+                });
             });
             function handle_get_users(data) {
                 var result = $(".result");
@@ -26,10 +30,13 @@
                 //$( ".result" ).html( data );
                 //alert( "Load was performed." );
                 
-            }            
+            } 
+                       
         </script>
     </head>
-    <body>          
+    <body>
+        <input type="button" id="myButton" value="Click Me" />
+        <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/5/58/Sunset_2007-1.jpg"/>        
         <table class="result">
         </table>
     </body>
