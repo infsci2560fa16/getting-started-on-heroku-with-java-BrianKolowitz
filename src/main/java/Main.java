@@ -18,6 +18,15 @@ import spark.Route;
 
 public class Main {
 
+    private static boolean shouldReturnHtml(Request request) {
+      String accept = request.headers("Accept");
+      return accept != null && accept.contains("text/html");
+    }
+    private static boolean shouldReturnXml(Request request) {
+      String accept = request.headers("Accept");
+      return accept != null && accept.contains("text/xml");
+    }
+    
   public static void main(String[] args) {
 
     port(Integer.valueOf(System.getenv("PORT")));
@@ -25,12 +34,32 @@ public class Main {
 
     get("/hello", (req, res) -> "Hello World");
 
-    get("/", (request, response) -> {
-            Map<String, Object> attributes = new HashMap<>();
-            attributes.put("message", "Hello World!");
 
-            return new ModelAndView(attributes, "index.ftl");
-        }, new FreeMarkerEngine());
+    // get("/", (request, response) -> {
+    //         Map<String, Object> attributes = new HashMap<>();
+    //         attributes.put("message", "Hello World!");
+    //         return new ModelAndView(attributes, "index.ftl");
+    //     }, new FreeMarkerEngine());
+    
+    get("/", (request, response) -> {
+        Map<String, Object> attributes = new HashMap<>();
+        attributes.put("message", "Hello World!");
+        
+      if (shouldReturnHtml(request)) {
+          response.status(200);
+          response.type("text/html");
+          return new FreeMarkerEngine().render(new ModelAndView(attributes, "index.ftl"));
+      } else if (shouldReturnXml(request)) {
+          response.status(200);
+          response.type("text/xml");
+          return null; // todo return xml
+      } 
+      else {
+          response.status(200);
+          response.type("application/json");
+          return JsonUtil.toJson(attributes);
+      }
+  });
 
     get("/db", (req, res) -> {
       Connection connection = null;
